@@ -1,0 +1,30 @@
+#form{
+    display: flex;
+    flex-direction: column;
+    width: 30rem;
+    margin-bottom: 1rem;
+    justify-content: space-between;
+    height: 20rem;
+    /* background-color: yellow; */
+}
+
+input{
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#form_container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    background-color:yellow;
+}
+
+button{
+    padding: 10px;
+    background-color: blueviolet;
+    border: none;
+    border-radius: 10px;
+}
