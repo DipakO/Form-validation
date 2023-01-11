@@ -1,8 +1,10 @@
 import React from 'react'
-// import * as yup from 'yup'
 import * as yup from 'yup'
 import { Formik , Form , Field , ErrorMessage} from 'formik'
+import YupPassword from 'yup-password';
+YupPassword(yup);
 const Formm = () => {
+
   const defaultValue ={
     name : "",
     email : "",
@@ -12,15 +14,17 @@ const Formm = () => {
     transportMode: ""
   }
 
-  // const validationSchema = yup.object().shape({
-    // name : yup.string.required("Please enter your name")
-  // })
-
 const validationSchema = yup.object().shape({
   name: yup.string().required("Please enter your name"),
   email: yup.string().required("Please enter your email").email("please enter valid email"),
-  password: yup.string().required("Please enter your password").matches(
-    "^(?=.*[A-Za-z])(?=.*d)(?=.*[@$!%*#?&])[A-Za-zd@$!%*#?&]{8,}$", "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"),
+  password: yup.string().required('required').min(
+        8,
+        'password must contain 8 or more characters with at least one of each: uppercase, lowercase, number and special'
+      )
+      .minLowercase(1, 'password must contain at least 1 lower case letter')
+      .minUppercase(1, 'password must contain at least 1 upper case letter')
+      .minNumbers(1, 'password must contain at least 1 number')
+      .minSymbols(1, 'password must contain at least 1 special character'),
   gender: yup.string().required("Please enter your gender"),
   transportMode: yup.string().required("Please select  transportMode"),
   termsAndConditon: yup.boolean().oneOf([true], "please accept terms and Conditon")
